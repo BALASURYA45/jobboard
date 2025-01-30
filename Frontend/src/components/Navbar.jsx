@@ -7,6 +7,7 @@ const Navbar = () => {
       <Link to="/signup">Signup</Link>
       <Link to="/login">Login</Link>
       <Link to="/about-us">AboutUs</Link>
+      <Link to="/applyjob">Apply</Link>
       <Link to="/jobs">Jobs</Link>
       <Link to="/upload-resume">Upload Resume</Link>
     </nav>
