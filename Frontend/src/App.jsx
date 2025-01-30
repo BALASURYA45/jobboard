@@ -7,22 +7,13 @@ import SignupPage from './pages/SignupPage';
 import LoginPage from './pages/LoginPage';
 import ResumeUploaderPage from './pages/ResumeUploaderPage';
 import AboutUs from './pages/AboutUs';
-import ApplyForJob from './pages/ApplyForJob'; // Import the new page
+import ApplyForJob from './pages/ApplyForJob'; 
 import Navbar from './components/Navbar';
+import JobList from './components/JobList';
 import './App.css';
 
 const App = () => {
-  const [jobs, setJobs] = useState([]);
-
-  useEffect(() => {
-    fetchJobs();
-  }, []);
-
-  const fetchJobs = async () => {
-    const response = await axios.get('http://localhost:5000/api/jobs');
-    setJobs(response.data);
-  };
-
+  
   return (
     <Router>
       <div className="App">
@@ -31,11 +22,12 @@ const App = () => {
           <Route path="/" element={<Navigate to="/signup" />} />
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/login" element={<LoginPage />} />
-          <Route path="/jobs" element={<Home jobs={jobs} />} />
-          <Route path="/jobs/:id" element={<JobDetails jobs={jobs} />} />
+          <Route path="/jobs" element={<Home />} />
+          <Route path="/joblist" element={<JobList />}/>
+          <Route path="/jobs/:id" element={<JobDetails/>} />
           <Route path="/upload-resume" element={<ResumeUploaderPage />} />
           <Route path="/about-us" element={<AboutUs />} />
-          <Route path="/applyjob" element={<ApplyForJob jobs={jobs} />} /> {/* Add the new route */}
+          <Route path="/applyjob" element={<ApplyForJob />} /> {/* Add the new route */}
         </Routes>
       </div>
     </Router>

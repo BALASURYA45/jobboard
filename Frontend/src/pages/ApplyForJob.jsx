@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-
-const ApplyForJob = ({ jobs }) => {
-  const { id } = useParams(); // Get the job ID from the URL
-  const job = jobs.find(job => job._id === id); // Find the job by ID
+import axios from 'axios'
+const ApplyForJob = () => {
+  const { id } = useParams(); 
+  const [jobs, setJobs] = useState([]);
+  const job = jobs.find(job => job._id === id); 
   const navigate = useNavigate();
+  
 
   const [formData, setFormData] = useState({
     name: '',
@@ -16,21 +18,16 @@ const ApplyForJob = ({ jobs }) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit =(e) => {
     e.preventDefault();
-    // Perform form submission logic here (e.g., API call)
-    console.log('Application Data:', formData);
-    alert('Applied successfully!'); // Show success message
-    navigate('/jobs'); // Redirect to job list page after submission
+    alert("job applied succesful");
+    
   };
 
-  if (!job) {
-    return <div>Job not found</div>;
-  }
+ 
 
   return (
     <div className="apply-for-job">
-      <h1>Apply for {job.title}</h1>
       <form onSubmit={handleSubmit}>
         <input
           type="text"

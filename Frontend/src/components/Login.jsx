@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import axios from 'axios'
 const Login = () => {
   const [formData, setFormData] = useState({
     email: '',
     password: '',
   });
   const navigate = useNavigate();
+  var[job,setJob]=useState([]);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -14,9 +15,11 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Perform login logic here (e.g., API call)
-    console.log('Login Data:', formData);
-    navigate('/jobs'); // Redirect to job list page after login
+    var req=axios.get('http://localhost:8080/get-job').then((res)=>{
+      setJob(res.data);
+      navigate('/jobs',{state:res.data});
+    })
+    
   };
 
   return (

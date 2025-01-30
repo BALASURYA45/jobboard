@@ -17,7 +17,7 @@ const Signup = () => {
     e.preventDefault();
     
     console.log('Signup Data:', formData);
-    navigate('/login'); 
+    navigate('/login',); 
   };
 
   return (

@@ -1,7 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
-const JobList = ({ jobs }) => {
+const JobList = () => {
+  const location=useLocation();
+  var jobs=location.state||[];
   return (
     <div className="job-list">
       <h2>Job Listings</h2>
