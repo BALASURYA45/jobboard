@@ -1,14 +1,6 @@
 const Job = require('../models/Job');
-
 // Get all jobs
-exports.getJobs = async (req, res) => {
-  try {
-    const jobs = await Job.find();
-    res.json(jobs);
-  } catch (err) {
-    res.status(500).json({ message: err.message });
-  }
-};
+exports.getJobs = 
 
 // Create a job
 exports.createJob = async (req, res) => {
