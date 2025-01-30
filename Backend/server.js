@@ -27,7 +27,24 @@ app.post('/add-job',async(req,res)=>{
 catch(err){
   res.status(400).json({message:false});
 }
-})
+});
+
+
+app.post('/add-application',async(req,res)=>{
+  try{
+  var {name,email,tell_about_yourself}=req.body;
+  var new_application=new application({
+    name,
+    email,
+    tell_about_yourself
+  })
+  await new_application.save();
+  res.status(200).json({message:true})
+}
+catch(err){
+  res.status(400).json({message:false});
+}
+});
 
 // app.use('/api/jobs', jobRoutes);
 app.get('/get-job',async (req, res) => {

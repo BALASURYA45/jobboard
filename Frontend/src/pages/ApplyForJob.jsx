@@ -46,8 +46,8 @@ const ApplyForJob = () => {
           required
         />
         <textarea
-          name="resume"
-          placeholder="Paste your resume here"
+          name="description"
+          placeholder="Tell about yourself"
           value={formData.resume}
           onChange={handleChange}
           required

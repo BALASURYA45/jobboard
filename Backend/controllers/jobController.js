@@ -12,3 +12,16 @@ exports.createJob = async (req, res) => {
     res.status(400).json({ message: err.message });
   }
 };
+
+  exports.getJobs = 
+
+// Create a job
+exports.createApplication = async (req, res) => {
+  const application= new Application(req.body);
+  try {
+    const savedApplication = await application.save();
+    res.status(201).json(savedApplication);
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+};

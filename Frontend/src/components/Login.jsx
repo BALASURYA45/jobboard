@@ -17,10 +17,21 @@ const Login = () => {
     e.preventDefault();
     var req=axios.get('http://localhost:8080/get-job').then((res)=>{
       setJob(res.data);
-      navigate('/jobs',{state:res.data});
+      navigate('/applyjob',{state:res.data});
     })
     
   };
+ /* const handleSubmit = async (e) => {
+  e.preventDefault();
+  try {
+    const res = await axios.get('http://localhost:8080/get-job');
+    setJob(res.data);
+    navigate('/applyjob', { state: res.data }); // Redirect to Apply page
+  } catch (error) {
+    console.error('Error fetching jobs:', error);
+  }
+};*/
+
 
   return (
     <div className="login">
