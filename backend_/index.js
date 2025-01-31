@@ -11,6 +11,12 @@ const MONGO_URI = process.env.MONGO_URI;
 
 app.use(cors());
 app.use(express.json());
+
+
+mongoose.connect(MONGO_URI)
+  .then(() => console.log('Connected to MongoDB'))
+  .catch(err => console.error('Error connecting to MongoDB:', err));
+  
 app.post('/add-job',async(req,res)=>{
   try{
   var {title,description,company,location,salary}=req.body;
@@ -46,7 +52,6 @@ catch(err){
 }
 });
 
-// app.use('/api/jobs', jobRoutes);
 app.get('/get-job',async (req, res) => {
   try {
     const jobs = await Job.find({});
@@ -57,9 +62,6 @@ app.get('/get-job',async (req, res) => {
 });
 
 
-mongoose.connect(MONGO_URI)
-  .then(() => console.log('Connected to MongoDB'))
-  .catch(err => console.error('Error connecting to MongoDB:', err));
 
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
